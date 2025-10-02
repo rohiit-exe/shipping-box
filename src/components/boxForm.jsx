@@ -28,6 +28,7 @@ export default function BoxForm() {
 
     const [error, setError] = useState("");
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [success, setSuccess] = useState("");
 
     // Dynamic Tailwind classes for inputs
     const inputClass = "w-full border-gray-300 border-2 p-3 rounded-lg transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-blue-100 focus:border-blue-500";
@@ -84,12 +85,19 @@ export default function BoxForm() {
 
             setForm({ name: "", weight: "", color: "#000000", country: "" });
             setError("");
+            setSuccess("Shipment successfully added!"); // Show success message
+
+            // Auto-hide success after 3 seconds
+            setTimeout(() => setSuccess(""), 3000);
+
         } catch (err) {
             console.error("Submission failed:", err);
             setError("An unexpected error occurred during submission.");
         } finally {
             setIsSubmitting(false);
         }
+
+
     };
 
 
@@ -111,6 +119,13 @@ export default function BoxForm() {
                     {error && (
                         <div className="fixed top-4 left-1/2 -translate-x-1/2 bg-red-50 border-l-4 border-red-500 text-red-700 p-4 rounded-lg shadow-lg z-50">
                             <p className="font-medium">{error}</p>
+                        </div>
+                    )}
+
+                    {/* Success Message */}
+                    {success && (
+                        <div className="fixed top-4 left-1/2 -translate-x-1/2 bg-green-50 border-l-4 border-green-500 text-green-700 p-4 rounded-lg shadow-lg z-50">
+                            <p className="font-medium">{success}</p>
                         </div>
                     )}
 
