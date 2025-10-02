@@ -2,7 +2,7 @@ import React from "react";
 import { Routes, Route, Navigate } from "react-router-dom";
 import BoxForm from "./components/boxForm";
 import BoxTable from "./components/boxTable";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar";
 
 function App() {
   return (
